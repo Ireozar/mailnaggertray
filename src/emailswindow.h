@@ -1,16 +1,16 @@
 #ifndef MAILNAGTRAY_EMAILSWINDOW_H
 #define MAILNAGTRAY_EMAILSWINDOW_H
 
+#include <QList>
 #include <QMainWindow>
 #include <QMap>
-#include <QList>
 #include <QString>
 
-#include "mailnagdbus.h"
+#include "mailnaggerdbus.h"
 
 struct EmailStats {
-    QString account;
-    long long messages;
+  QString account;
+  long long messages;
 };
 
 QT_BEGIN_NAMESPACE
@@ -23,40 +23,38 @@ class QMouseEvent;
 class ListWidget;
 QT_END_NAMESPACE
 
-class EmailsWindow : public QMainWindow
-{
-    Q_OBJECT
+class EmailsWindow : public QMainWindow {
+  Q_OBJECT
 
 public:
-    EmailsWindow();
-    void addMessage(MailnagMessage message);
-    void clearMessages();
-    void updateMessages();
-    void removeMessage(QString account, QString id);
-    QList<EmailStats> getStats();
+  EmailsWindow();
+  void addMessage(MailnaggerMessage message);
+  void clearMessages();
+  void updateMessages();
+  void removeMessage(QString account, QString id);
+  QList<EmailStats> getStats();
 
 private:
-    void onAbout();
-    void accountActivated(QListWidgetItem *item);
+  void onAbout();
+  void accountActivated(QListWidgetItem *item);
 
 private slots:
-    void onEmailsRClick();
-    void onEmailsLClick();
+  void onEmailsRClick();
+  void onEmailsLClick();
 
 private:
-    QMap<QString, QListWidgetItem*> _accountsMap;
-    QMap<QString, QList<MailnagMessage>> _messagesMap;
+  QMap<QString, QListWidgetItem *> _accountsMap;
+  QMap<QString, QList<MailnaggerMessage>> _messagesMap;
 
-    QWidget *_centralWidget;
-    QVBoxLayout *_layout;
-    ListWidget *_emailsList;
-    QTreeWidget *_messagesList;
+  QWidget *_centralWidget;
+  QVBoxLayout *_layout;
+  ListWidget *_emailsList;
+  QTreeWidget *_messagesList;
 
-    QToolBar *_toolBar;
-    QAction *_checkEmailsAction;
-    QAction *_mailNagConfigAction;
-    QAction *_onlineAccountsAction;
-    QAction *_aboutAction;
+  QToolBar *_toolBar;
+  QAction *_checkEmailsAction;
+  QAction *_mailNagConfigAction;
+  QAction *_aboutAction;
 };
 
-#endif //MAILNAGTRAY_EMAILSWINDOW_H
+#endif // MAILNAGTRAY_EMAILSWINDOW_H

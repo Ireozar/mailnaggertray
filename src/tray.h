@@ -1,10 +1,10 @@
 #ifndef MAILNAGTRAY_TRAY_H
 #define MAILNAGTRAY_TRAY_H
 
-#include <QSystemTrayIcon>
 #include <QDBusMessage>
+#include <QSystemTrayIcon>
 
-#include "mailnagdbus.h"
+#include "mailnaggerdbus.h"
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -21,40 +21,39 @@ QT_END_NAMESPACE
 
 class EmailsWindow;
 
-class Tray : public QSystemTrayIcon
-{
-    Q_OBJECT
+class Tray : public QSystemTrayIcon {
+  Q_OBJECT
 
 public:
-    Tray();
+  Tray();
 
 private:
-    void loadIcons();
-    void setupSettings();
-    void setupMenu();
-    void setupTimer();
-    void registerMessages(QList<MailnagMessage> messages);
+  void loadIcons();
+  void setupSettings();
+  void setupMenu();
+  void setupTimer();
+  void registerMessages(QList<MailnaggerMessage> messages);
 
 private slots:
-    void iconActivated(QSystemTrayIcon::ActivationReason reason);
-    void onSettingsClicked();
-    void onMailTimer();
-    void onMailsAdded(QDBusMessage message);
-    void onMailsRemoved(QDBusMessage message);
+  void iconActivated(QSystemTrayIcon::ActivationReason reason);
+  void onSettingsClicked();
+  void onMailTimer();
+  void onMailsAdded(QDBusMessage message);
+  void onMailsRemoved(QDBusMessage message);
 
 private:
-    EmailsWindow *_emailsWindow;
+  EmailsWindow *_emailsWindow;
 
-    QIcon _mailUnreadIcon;
-    QIcon _mailReadIcon;
+  QIcon _mailUnreadIcon;
+  QIcon _mailReadIcon;
 
-    QMenu *_iconMenu;
-    QAction *_messagesAction;
-    QAction *_mailNagConfigAction;
-    QAction *_onlineAccountsAction;
-    QAction *_quitAction;
+  QMenu *_iconMenu;
+  QAction *_messagesAction;
+  QAction *_mailNagConfigAction;
+  QAction *_onlineAccountsAction;
+  QAction *_quitAction;
 
-    QTimer *_mailTimer;
+  QTimer *_mailTimer;
 };
 
-#endif //MAILNAGTRAY_TRAY_H
+#endif // MAILNAGTRAY_TRAY_H

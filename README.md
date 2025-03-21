@@ -1,14 +1,19 @@
-# Mailnag Tray
+# Mailnagger Tray
 
-A tray icon applet for mail monitoring using mailnag and written on QT to
+A tray icon applet for mail monitoring using mailnagger and written on QT to
 support any desktop environment that supports a standard system tray.
 
 * OS: Linux
 * License: GPLv2
 
+## Differences in from original
+
+* removed GOA integration
+* use mailnagger-config instead of mailnag-config (more up-to-date)
+
 ## Requirements
 
-* [Mailnag](https://github.com/pulb/mailnag) - mail notifications
+* [Mailnagger](https://github.com/tikank/mailnagger) - mail notifications
 * [QT6](https://www.qt.io/) - graphical interface and dbus ipc
 * [Libnotify](https://gitlab.gnome.org/GNOME/libnotify) - message notifications
 * [Meson](https://mesonbuild.com/) - build the application
@@ -29,17 +34,3 @@ After a successfull build you can install the utility globally by executing:
 ```sh
 sudo meson install -C build
 ```
-
-### ArchLinux
-
-A PKGBUILD is available on the Arch User Repository:
-
-```sh
-yay -S mailnagtray
-```
-
-## Screenshots
-
-![tray icon](screenshots/tray.png)
-
-![messages log](screenshots/messages.png)

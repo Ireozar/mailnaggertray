@@ -2,14 +2,13 @@
 
 #include <QMouseEvent>
 
-ListWidget::ListWidget(): QListWidget() {}
+ListWidget::ListWidget() : QListWidget() {}
 
-void ListWidget::mousePressEvent(QMouseEvent *e)
-{
-    QListWidget::mousePressEvent(e);
+void ListWidget::mousePressEvent(QMouseEvent *e) {
+  QListWidget::mousePressEvent(e);
 
-    if(e->button()==Qt::RightButton)
-        emit rightClick();
-    else
-        emit leftClick();
+  if (e->button() == Qt::RightButton)
+    emit rightClick();
+  else
+    emit leftClick();
 }

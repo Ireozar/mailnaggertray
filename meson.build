@@ -1,5 +1,5 @@
 project(
-  'mailnagtray',
+  'mailnaggertray',
   'c', 'cpp',
   version: '0.4',
   license: 'GPL',
@@ -22,7 +22,7 @@ sources = files(
   'src/tray.cpp',
   'src/emailswindow.cpp',
   'src/listwidget.cpp',
-  'src/mailnagdbus.cpp',
+  'src/mailnaggerdbus.cpp',
   'src/util.cpp',
 )
 
@@ -34,7 +34,7 @@ qtprocessed = qt.preprocess(
 
 sources += qtprocessed
 
-exe = executable('mailnagtray',
+exe = executable('mailnaggertray',
   sources,
   include_directories: includes,
   dependencies: [qt_deps, libnotify_dep],
@@ -42,12 +42,7 @@ exe = executable('mailnagtray',
   install_dir: 'bin'
 )
 
-# Installation files
-install_data('data/mailnagtray-startup.desktop',
-  rename: 'mailnagtray.desktop',
-  install_dir: '/etc/xdg/autostart'
-)
-install_data('data/mailnagtray.desktop',
+install_data('data/mailnaggertray.desktop',
   install_dir: 'share/applications'
 )
 

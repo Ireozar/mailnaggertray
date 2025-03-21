@@ -7,19 +7,18 @@ QT_BEGIN_NAMESPACE
 class QMouseEvent;
 QT_END_NAMESPACE
 
-class ListWidget : public QListWidget
-{
-    Q_OBJECT
+class ListWidget : public QListWidget {
+  Q_OBJECT
 
 public:
-    ListWidget();
+  ListWidget();
 
 public slots:
-    void mousePressEvent(QMouseEvent* event);
+  void mousePressEvent(QMouseEvent *event);
 
 signals:
-    void rightClick();
-    void leftClick();
+  void rightClick();
+  void leftClick();
 };
 
-#endif //MAILNAGTRAY_LISTWIDGET_H
+#endif // MAILNAGTRAY_LISTWIDGET_H

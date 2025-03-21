@@ -3,14 +3,11 @@
 
 #include <QString>
 
-class Util
-{
+class Util {
 public:
-    static void openMailnagConfig();
-    static void openOnlineAccounts();
-    static void showNotification(
-        QString title, QString message, QString icon="mailnag", int timeout=10
-    );
+  static void openMailnaggerConfig();
+  static void showNotification(QString title, QString message,
+                               QString icon = "mailnagger", int timeout = 0);
 };
 
-#endif //MAILNAGTRAY_TRAY_H
+#endif // MAILNAGTRAY_TRAY_H

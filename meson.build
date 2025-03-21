@@ -6,7 +6,7 @@ project(
   default_options: ['c_std=c11', 'cpp_std=c++17']
 )
 
-# QT Enablement
+# Enabling QT
 qt = import('qt6')
 qt_deps = dependency('qt6', modules: ['Core', 'Gui', 'Widgets', 'DBus'])
 

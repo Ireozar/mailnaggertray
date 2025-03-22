@@ -37,16 +37,14 @@ int main(int argc, char *argv[]) {
   QString title = QObject::tr("Mailnagger Tray");
 
   if (!QSystemTrayIcon::isSystemTrayAvailable()) {
-    int runs = 0;
-    bool tray_found = true;
-    do {
+    bool tray_found = false;
+    for (int i = 0; i < 5; i++) {
       QThread::sleep(1);
-      runs++;
-      if (runs == 5) {
-        tray_found = false;
+      if (QSystemTrayIcon::isSystemTrayAvailable()) {
+        tray_found = true;
         break;
       }
-    } while (!QSystemTrayIcon::isSystemTrayAvailable());
+    }
     if (!tray_found) {
       QString message = QObject::tr("No system tray detected on this system.");
       QMessageBox::critical(nullptr, title, message);
@@ -56,16 +54,14 @@ int main(int argc, char *argv[]) {
   }
 
   if (!MailnagDBus::running()) {
-    int runs = 0;
-    bool running = true;
-    do {
+    bool running = false;
+    for (int i = 0; i < 10; i++) {
       QThread::sleep(1);
-      runs++;
-      if (runs == 10) {
-        running = false;
+      if (MailnagDBus::running()) {
+        running = true;
         break;
       }
-    } while (!MailnagDBus::running());
+    }
     if (!running) {
       QString message = QObject::tr("Mailnagger daemon not running.");
       QMessageBox::critical(nullptr, title, message);

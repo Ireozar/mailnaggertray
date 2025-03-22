@@ -10,9 +10,6 @@ project(
 qt = import('qt6')
 qt_deps = dependency('qt6', modules: ['Core', 'Gui', 'Widgets', 'DBus'])
 
-# LibNotify
-libnotify_dep = dependency('libnotify', version: '>= 0.5', required: true)
-
 # Set include directories
 includes = include_directories('src')
 
@@ -37,7 +34,7 @@ sources += qtprocessed
 exe = executable('mailnaggertray',
   sources,
   include_directories: includes,
-  dependencies: [qt_deps, libnotify_dep],
+  dependencies: [qt_deps],
   install: true,
   install_dir: 'bin'
 )

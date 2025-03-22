@@ -114,37 +114,16 @@ void Tray::onMailTimer() {
 
     Tray::registerMessages(messages);
 
-    QList<EmailStats> stats = _emailsWindow->getStats();
-    for (const EmailStats &stat : stats) {
-      Util::showNotification(tr("New E-mails"),
-                             stat.account + " (" +
-                                 QString::number(stat.messages) + ")");
-    }
-
     _mailTimer->stop();
   }
 }
 
 void Tray::onMailsAdded(QDBusMessage message) {
-  QDBusArgument newMessages = message.arguments()[0].value<QDBusArgument>();
   QDBusArgument allMessages = message.arguments()[1].value<QDBusArgument>();
 
-  QList<MailnaggerMessage> new_messages = MailnagDBus::toMessages(&newMessages);
   QList<MailnaggerMessage> all_messages = MailnagDBus::toMessages(&allMessages);
 
   Tray::registerMessages(all_messages);
-
-  int count = 0;
-  for (const MailnaggerMessage &message : new_messages) {
-    Util::showNotification(tr("New e-mail") + " (" + message.account_name + ")",
-                           message.sender_name + ":\n" + message.subject,
-                           "mail-unread");
-
-    count++;
-
-    if (count == 10)
-      break;
-  }
 }
 
 void Tray::onMailsRemoved(QDBusMessage message) {

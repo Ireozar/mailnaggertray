@@ -6,9 +6,9 @@ support any desktop environment that supports a standard system tray.
 * OS: Linux
 * License: GPLv2
 
-## Differences in from original
+## Differences from original
 
-* removed GOA integration
+* removed GOA integration and notification support
 * use mailnagger-config instead of mailnag-config (more up-to-date)
 
 ## Requirements

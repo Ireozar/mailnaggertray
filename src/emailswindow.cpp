@@ -18,7 +18,6 @@
 EmailsWindow::EmailsWindow() : QMainWindow() {
   setWindowTitle(tr("New E-mails"));
   setWindowIcon(QIcon::fromTheme("mailnag"));
-  setMinimumWidth(600);
 
   // Toolbar
   _toolBar = addToolBar(tr("Main Toolbar"));
@@ -54,7 +53,6 @@ EmailsWindow::EmailsWindow() : QMainWindow() {
   _emailsList = new ListWidget();
   _emailsList->setIconSize(QSize(48, 48));
   _layout->addWidget(_emailsList);
-  _emailsList->setMaximumHeight(200);
   connect(_emailsList, &ListWidget::leftClick, this,
           &EmailsWindow::onEmailsLClick);
   connect(_emailsList, &ListWidget::rightClick, this,
@@ -68,11 +66,11 @@ EmailsWindow::EmailsWindow() : QMainWindow() {
   _messagesList->setIndentation(0);
   _messagesList->setColumnCount(4);
   _messagesList->headerItem()->setText(0, tr("Date"));
-  _messagesList->setColumnWidth(0, 300);
+  _messagesList->setColumnWidth(0, 100);
   _messagesList->headerItem()->setText(1, tr("From"));
-  _messagesList->setColumnWidth(1, 200);
+  _messagesList->setColumnWidth(1, 100);
   _messagesList->headerItem()->setText(2, tr("E-mail"));
-  _messagesList->setColumnWidth(2, 300);
+  _messagesList->setColumnWidth(2, 200);
   _messagesList->headerItem()->setText(3, tr("Subject"));
   _layout->addWidget(_messagesList);
 

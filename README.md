@@ -1,3 +1,8 @@
+# Important
+A slightly different version of this project has been created using Rust over
+at [Codeberg](https://codeberg.org/ireozar/mailnaggertray), meaning this project is now
+abandoned.
+
 # Mailnagger Tray
 
 A tray icon applet for mail monitoring using mailnagger and written on QT to
